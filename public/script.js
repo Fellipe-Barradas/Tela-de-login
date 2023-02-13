@@ -1,6 +1,8 @@
 const form = document.querySelector("#form-id")
 const refreshBtn = document.querySelector("#refresh");
 const resultado = document.querySelector("#resultado")
+//RegEx
+const telRegEx = /^([1-9]\d)(\d{4})-?(\d{4})$/
 //Colocar o evento no input submit e receber dados do form.
 refreshBtn.addEventListener("click", function(){
     location.reload()
@@ -12,8 +14,7 @@ form.addEventListener('submit', function(e){
     let lastName = document.querySelector("#last-name").value;
     let email = document.querySelector("#email-set").value;
     let cell = document.querySelector("#cell-set").value;
-    //RegEx
-    const telRegEx = /^([1-9]\d)(\d{4})-?(\d{4})$/
+
     //Mensagens de erros//
     let errorMsg = document.querySelector("#error-msg");
     let errorMsg2 = document.querySelector("#error-msg2");
@@ -35,12 +36,13 @@ form.addEventListener('submit', function(e){
         }
     }
     //Adicionar os dados ao resultado
-    createDiv(firstName, lastName)
+    createDiv(firstName, lastName, email, cell)
+    form.classList.add('hidden');
 })
 
-function createDiv(fn, ln){
+function createDiv(fn, ln, eml, tel){
     const div = document.createElement('div');
-    div.innerHTML=`Seja bem vindo(a) ${fn} ${ln}!`;
+    div.innerHTML=`Seja bem vindo(a) <b>${fn} ${ln}</b>!<br>Verifique seus dados:<br><br>Email: <b>${eml}</b><br>Telefone: <b>${tel.replace(telRegEx, '($1)$2-$3')}</b>`;
     resultado.appendChild(div);
 
 }
