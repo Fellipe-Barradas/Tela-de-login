@@ -1,5 +1,6 @@
 const form = document.querySelector("#form-id")
-const refreshBtn = document.querySelector("#refresh")
+const refreshBtn = document.querySelector("#refresh");
+const resultado = document.querySelector("#resultado")
 //Colocar o evento no input submit e receber dados do form.
 refreshBtn.addEventListener("click", function(){
     location.reload()
@@ -18,7 +19,6 @@ form.addEventListener('submit', function(e){
     let errorMsg2 = document.querySelector("#error-msg2");
     let errorEmail = document.querySelector("#error-email");
     let errorTel = document.querySelector("#error-tel");
-
     validarMsg()
     function validarMsg(){
         if (firstName.includes(" ") == true || firstName.length == 0){
@@ -34,5 +34,13 @@ form.addEventListener('submit', function(e){
             errorTel.classList.remove("hidden");
         }
     }
+    //Adicionar os dados ao resultado
+    createDiv(firstName, lastName)
 })
 
+function createDiv(fn, ln){
+    const div = document.createElement('div');
+    div.innerHTML=`Seja bem vindo(a) ${fn} ${ln}!`;
+    resultado.appendChild(div);
+
+}
