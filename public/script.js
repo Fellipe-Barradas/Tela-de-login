@@ -1,7 +1,20 @@
 const form = document.querySelector("#form-id")
 const refreshBtn = document.querySelector("#refresh");
-const resultado = document.querySelector("#resultado")
-//RegEx
+const resultado = document.querySelector("#resultado");
+const corectBtn = document.querySelector("#correct");
+const IncorrectBtn= document.querySelector("#incorrect");
+const rating= document.querySelector("#rating");
+//Botão de avaliação negativa
+IncorrectBtn.addEventListener("click", function(){
+    location.reload()
+})
+//Botão de avaliação positiva
+corectBtn.addEventListener("click", function(){
+    rating.classList.replace("w-2/12", "w-full");
+    rating.classList.add("text-xl")
+    rating.innerHTML = "Obrigado por ter se cadastrado conosco, garantimos que seus dados estão seguros de qualquer uso inadequado, aproveite o app!"
+})
+//RegExd
 const telRegEx = /^([1-9]\d)(\d{4})-?(\d{4})$/
 //Colocar o evento no input submit e receber dados do form.
 refreshBtn.addEventListener("click", function(){
@@ -28,7 +41,7 @@ form.addEventListener('submit', function(e){
         if (lastName.includes(" ") == true || lastName.length == 0){
             errorMsg2.classList.remove("hidden");
         }
-        if (email.includes("email"&&".com", "hotmail"&&".com") == false || email.length == 0){
+        if (email.includes("email"&&".com"||"hotmail"&&".com") == false || email.length == 0){
             errorEmail.classList.remove("hidden");
         }
         if(cell.match(telRegEx)===null){
@@ -38,6 +51,9 @@ form.addEventListener('submit', function(e){
     //Adicionar os dados ao resultado
     createDiv(firstName, lastName, email, cell)
     form.classList.add('hidden');
+    resultado.classList.remove('hidden')
+    rating.classList.remove('hidden')
+
 })
 
 function createDiv(fn, ln, eml, tel){
