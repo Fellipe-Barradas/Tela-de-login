@@ -7,7 +7,7 @@ Esse repositório é apenas uma tela de login simples, que eu busco testar meus 
 O objetivo é simples, fazer com que o usuário possa adicionar dados(firstName, lastName, etc) e que ao fim do progresso esses dados sejam apresentados de volta ao usuário com js. Logo o usuário pode verificar se os dados estão corretos e em seguida finalizar a página.
 Outras caracteristicas:
  Botão de refresh,
- RegEx para modificar o formato de telefone enciado pelo usuário,
+ RegEx para modificar o formato de telefone indicado pelo usuário,
  Animações e interações com os botões,
 
 # Tecnologias usadas:
